@@ -1,0 +1,30 @@
+/* ClientInfo.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-bottom: 20px;
+   }
+   
+   .container h2 {
+    color: #333;
+    font-weight: bold;
+   }
+   
+   .container p {
+    color: #666;
+   }
+
+   .button {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+   }
+   
