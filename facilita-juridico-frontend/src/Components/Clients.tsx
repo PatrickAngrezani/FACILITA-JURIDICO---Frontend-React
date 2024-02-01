@@ -1,8 +1,9 @@
-import styles from "./Clients.module.css";
 import { useState, useEffect } from "react";
+import styles from "../CSSModules/Clients.module.css";
+import ClientsFilter from "./ClientsFilter";
 import Points from "./Points";
 
-interface Client {
+interface IClient {
   id: string;
   name: string;
   email: string;
@@ -12,9 +13,10 @@ interface Client {
 }
 
 const Clients = (): JSX.Element => {
-  const [clients, setClients] = useState<Client[]>([]);
+  const [clients, setClients] = useState<IClient[]>([]);
   const [openBoxes, setOpenBoxes] = useState<Record<string, boolean>>({});
   const [showPoints, setShowPoints] = useState(false);
+  const [filterText, setFilterText] = useState("");
 
   const url = "http://localhost:3001/clients";
 
@@ -32,6 +34,21 @@ const Clients = (): JSX.Element => {
     setOpenBoxes({ ...openBoxes, [id]: !openBoxes[id] });
   };
 
+  const handleFilterChange = (text: string) => {
+    setFilterText(text);
+  };
+
+  const filteredClients = clients.filter((client) => {
+    const lowerCaseFilterText = filterText.toLowerCase();
+  
+    return (
+      client.name.toLowerCase().includes(lowerCaseFilterText) ||
+      client.email.toLowerCase().includes(lowerCaseFilterText) ||
+      client.phone_number.toLowerCase().includes(lowerCaseFilterText)
+    );
+  });
+  
+
   return (
     <body
       style={{
@@ -39,13 +56,21 @@ const Clients = (): JSX.Element => {
       }}
     >
       <h1>Clients List</h1>
+      <div>
+        <ClientsFilter
+          filterText={filterText}
+          onFilterChange={handleFilterChange}
+        />
+      </div>
       <div style={{ display: "flex" }}>
         <div className={styles.clients_list}>
-          {clients.map((client, index) => {
+          {filteredClients.map((client, index) => {
             return (
               <div key={index} style={{ alignItems: "end" }}>
                 <strong className={styles.identifierClient}>
-                  <div style={{ fontWeight: "lighter" }}>{index + 1}.</div>
+                  <div style={{ fontWeight: "lighter", paddingLeft: 10 }}>
+                    {index + 1}.
+                  </div>
                   {client.name}
                   <button
                     onClick={() => toggleBoxClients(client.id)}
@@ -77,7 +102,7 @@ const Clients = (): JSX.Element => {
                         <strong className={styles.identifierClientProperty}>
                           Email:
                           <p className={styles.responseClientValue}>
-                            {client.email} ;
+                            {client.email};
                           </p>
                         </strong>
                       </li>
@@ -86,7 +111,7 @@ const Clients = (): JSX.Element => {
                           PhoneNumber:
                         </strong>
                         <p className={styles.responseClientValue}>
-                          {client.phone_number} ;
+                          {client.phone_number};
                         </p>
                       </li>
                       <li className={styles.li} key={client.id}>
@@ -94,7 +119,7 @@ const Clients = (): JSX.Element => {
                           Coordinates(x, y):
                         </strong>
                         <p className={styles.responseClientValue}>
-                          {"(" + client.x + ", " + client.y + ")"}
+                          {"(" + client.x + ", " + client.y + ")"}.
                         </p>
                       </li>
                     </ul>

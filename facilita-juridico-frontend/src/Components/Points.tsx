@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import styles from "./Points.module.css";
+import styles from "../CSSModules/Points.module.css";
 
-interface Visit {
+interface IVisit {
   id: string;
   name: string;
   x: number;
   y: number;
 }
 
-interface Result {
+interface IResult {
   totalDistance: string;
-  orderOfVisits: Visit[];
+  orderOfVisits: IVisit[];
 }
 
 const Points = (): JSX.Element => {
-  const [result, setResult] = useState<Result>({
+  const [result, setResult] = useState<IResult>({
     totalDistance: "",
     orderOfVisits: [],
   });
@@ -26,7 +26,6 @@ const Points = (): JSX.Element => {
       const response = await fetch(url);
 
       const data = await response.json();
-      console.log({ data });
       setResult(data);
     };
 

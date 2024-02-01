@@ -1,5 +1,5 @@
 body {
-  background-color: #7f7961;
+  background-color: #e0e0e0;
   flex-direction: column;
 }
 
@@ -8,17 +8,14 @@ h1 {
   align-items: center;
   justify-content: start;
   font-size: 2em;
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
-  width: 327px;
+  width: 322px;
   padding-left: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
-  color: #262727;
+  color: #34495e;
   font-weight: bold;
-  background-color: rgb(34, 140, 126);
-
-  border-radius: 7px;
+  background-color: #5dade2;
+  border-radius: 30px;
 }
 
 .container {
@@ -30,8 +27,8 @@ h1 {
 
 .pointsButton {
   font-weight: bold;
-  background-color: rgb(34, 140, 126);
-  color: #262727;
+  background-color: #5dade2;
+  color: #34495e;
   border: none;
   padding: 5px 50px;
   text-align: center;
@@ -39,13 +36,13 @@ h1 {
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  border-radius: 4px;
+  border-radius: 30px;
   transition: background-color 0.5s ease;
   margin-top: 20px;
 }
 
 .pointsButton:hover {
-  background-color: #1a606f;
+  background-color: #2e83d8;
   cursor: pointer;
 }
 
@@ -62,19 +59,19 @@ h1 {
 
 .responseClientValue {
   font-size: 14px;
-  color: #262727;
+  color: #34495e;
   margin-top: 1px;
 }
 
 .identifierClient {
   display: flex;
   align-items: center;
-  background-color: #7f7961;
+  background-color: #5dade2;
   font-size: 25px;
   border-bottom: 1px dotted black;
   border-right: 1px dotted black;
-  border-radius: 5px;
-  color: #262727;
+  border-radius: 30px;
+  color: #34495e;
 }
 
 .infoButton {
@@ -84,7 +81,7 @@ h1 {
   cursor: pointer;
   border: 1.5px dotted #080808;
   margin-bottom: 4px;
-  border-radius: 20px;
+  border-radius: 30px;
   font-size: 12px;
   font-weight: lighter;
   margin-top: 5px;
@@ -98,7 +95,7 @@ h1 {
 }
 
 .infoButton:hover {
-  background-color: #4d4a4a;
+  background-color: #2e83d8;
   cursor: pointer;
 }
 
@@ -109,9 +106,9 @@ h1 {
   padding-left: 5px;
   padding-right: 8px;
   border-radius: 20px;
-  background-color: rgb(34, 140, 126);
+  background-color: #5dade2;
   font-size: 14px;
-  color: #000000;
+  color: #34495e;
   margin-bottom: 18px;
   cursor: pointer;
 }
@@ -122,4 +119,5 @@ h1 {
   margin-left: 1px;
   float: right;
   width: 327px;
+  color: #5dade2;
 }

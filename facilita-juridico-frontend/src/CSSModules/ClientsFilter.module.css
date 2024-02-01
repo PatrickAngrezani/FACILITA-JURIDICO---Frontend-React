@@ -1,0 +1,13 @@
+.input_client{
+    margin-bottom: 12px;
+    margin-left: 6px;
+}
+
+.input_text {
+    border-radius: 10px;
+    margin-left: 12px;
+    background-color: #3498db69;
+    padding-right: 23px;
+    padding-left: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
