@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "./Points.module.css";
 
 interface Visit {
+  id: string;
+  name: string;
   x: number;
   y: number;
 }
@@ -11,7 +13,7 @@ interface Result {
   orderOfVisits: Visit[];
 }
 
-function Points() {
+const Points = (): JSX.Element => {
   const [result, setResult] = useState<Result>({
     totalDistance: "",
     orderOfVisits: [],
@@ -31,22 +33,33 @@ function Points() {
     fetchPoints();
   }, []);
 
+  const introductionPoints = `Below is a comprehensive list about clients coordinates and the optimal visitation order.`;
+  const advice =
+    "*The initial and terminal points correspond to our corporate headquarters, augmenting the comprehensiveness and precision of the  calculations.";
+
   return (
-    <div>
-      {result?.orderOfVisits.map((point, index) => {
-        return (
-          <div key={index}>
-            <p>
-              <strong>{index + 1}:</strong>
-            </p>
-            <p className={styles.container}>
-              x: {point.x} | y: {point.y}
-            </p>
-          </div>
-        );
-      })}
-    </div>
+    <body>
+      <h2 className={styles.introductionPoints}>{introductionPoints}</h2>
+      <p className={styles.advice}>{advice}</p>
+
+      <div className={styles.orderPoints}>
+        {result?.orderOfVisits.map((point, index) => {
+          return (
+            <ul key={index}>
+              <li>
+                <strong>
+                  {index + 1}. {point.name} - ({point.id})
+                </strong>
+                <p>
+                  x: {point.x} | y:{point.y}
+                </p>
+              </li>
+            </ul>
+          );
+        })}
+      </div>
+    </body>
   );
-}
+};
 
 export default Points;

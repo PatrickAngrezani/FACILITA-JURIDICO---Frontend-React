@@ -2,3 +2,26 @@
   display: flex;
   justify-content: space-between;
 }
+
+.introductionPoints {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-bottom: 0px;
+  margin-top: 35px;
+}
+
+.advice {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-top: 2px;
+  margin-bottom: 30px;
+  font-style: italic;
+  font-size: small;
+}
+
+.orderPoints {
+  background-color: rgb(34, 140, 126);
+  color: #262727;
+
+  padding: 5px;
+  border-radius: 20px;
+  width: 430px;
+}

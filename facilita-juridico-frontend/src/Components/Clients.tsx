@@ -1,16 +1,20 @@
 import styles from "./Clients.module.css";
 import { useState, useEffect } from "react";
+import Points from "./Points";
 
 interface Client {
   id: string;
   name: string;
   email: string;
   phone_number: string;
+  x: number;
+  y: number;
 }
 
 const Clients = (): JSX.Element => {
   const [clients, setClients] = useState<Client[]>([]);
   const [openBoxes, setOpenBoxes] = useState<Record<string, boolean>>({});
+  const [showPoints, setShowPoints] = useState(false);
 
   const url = "http://localhost:3001/clients";
 
@@ -24,38 +28,93 @@ const Clients = (): JSX.Element => {
     fetchClients();
   }, []);
 
-  const toggleBox = (id: string) => {
+  const toggleBoxClients = (id: string) => {
     setOpenBoxes({ ...openBoxes, [id]: !openBoxes[id] });
   };
 
   return (
-    <div>
+    <body
+      style={{
+        fontFamily: "monospace",
+      }}
+    >
       <h1>Clients List</h1>
-      {clients.map((client, index) => {
-        return (
-          <div key={index}>
-            <div key={index}>
-              <p>
-                <strong>
-                  {index + 1} - {client.name}
-                </strong>
-                <div key={index} className={styles.container}>
-                  <button onClick={() => toggleBox(client.id)} className={styles.button}>
-                    Client Info
+      <div style={{ display: "flex" }}>
+        <div className={styles.clients_list}>
+          {clients.map((client, index) => {
+            return (
+              <div key={index} style={{ alignItems: "end" }}>
+                <strong className={styles.identifierClient}>
+                  <div style={{ fontWeight: "lighter" }}>{index + 1}.</div>
+                  {client.name}
+                  <button
+                    onClick={() => toggleBoxClients(client.id)}
+                    className={styles.infoButton}
+                  >
+                    Info
                   </button>
-                </div>
+                </strong>
                 {openBoxes[client.id] && (
                   <div className={styles.container} key={index}>
-                    Id: {client.id} | Name: {client.name} | Email:{" "}
-                    {client.email} | PhoneNumber: {client.phone_number}
+                    <ul className={styles.info_values}>
+                      <li className={styles.li} key={client.id}>
+                        <strong className={styles.identifierClientProperty}>
+                          Id:
+                        </strong>
+                        <p className={styles.responseClientValue}>
+                          {client.id};
+                        </p>
+                      </li>
+                      <li className={styles.li} key={client.name}>
+                        <strong className={styles.identifierClientProperty}>
+                          Name:
+                        </strong>
+                        <p className={styles.responseClientValue}>
+                          {client.name};
+                        </p>
+                      </li>
+                      <li className={styles.li} key={client.email}>
+                        <strong className={styles.identifierClientProperty}>
+                          Email:
+                          <p className={styles.responseClientValue}>
+                            {client.email} ;
+                          </p>
+                        </strong>
+                      </li>
+                      <li className={styles.li} key={client.phone_number}>
+                        <strong className={styles.identifierClientProperty}>
+                          PhoneNumber:
+                        </strong>
+                        <p className={styles.responseClientValue}>
+                          {client.phone_number} ;
+                        </p>
+                      </li>
+                      <li className={styles.li} key={client.id}>
+                        <strong className={styles.identifierClientProperty}>
+                          Coordinates(x, y):
+                        </strong>
+                        <p className={styles.responseClientValue}>
+                          {"(" + client.x + ", " + client.y + ")"}
+                        </p>
+                      </li>
+                    </ul>
                   </div>
                 )}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <button
+        className={styles.pointsButton}
+        onClick={() => {
+          setShowPoints(!showPoints);
+        }}
+      >
+        Points
+      </button>
+      {showPoints && <Points />}
+    </body>
   );
 };
 
