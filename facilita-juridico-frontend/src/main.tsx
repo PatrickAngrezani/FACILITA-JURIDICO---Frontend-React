@@ -2,9 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import HomePage from "./Components/HomePage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Points from "./Components/Points.tsx";
-import Clients from "./Components/Clients.tsx"
-
+import Clients from "./Components/Clients.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,11 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/clients",
-    element: <Clients />
-  },
-  {
-    path: "/points",
-    element: <Points />,
+    element: <Clients />,
   },
 ]);
 
