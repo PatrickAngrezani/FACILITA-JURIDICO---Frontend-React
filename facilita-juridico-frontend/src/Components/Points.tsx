@@ -36,11 +36,18 @@ const Points = (): JSX.Element => {
   const advice =
     "*The starting and ending points correspond to our corporate headquarters, enhancing the range and precision of the calculations.";
 
+  const totalDistance = result.totalDistance;
+
   return (
     <body>
       <h2 className={styles.introductionPoints}>{introductionPoints}</h2>
       <p className={styles.advice}>{advice}</p>
-
+      <div className={styles.totalDistance} style={{ display: "flex" }}>
+        Total Distance:
+        <div style={{ fontWeight: "bold", marginLeft: 10 }}>
+          {totalDistance}
+        </div>
+      </div>
       <div className={styles.orderPoints}>
         {result?.orderOfVisits.map((point, index) => {
           return (

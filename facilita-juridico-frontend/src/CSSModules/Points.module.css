@@ -22,5 +22,17 @@
   color: #262727;
   padding: 5px;
   border-radius: 20px;
-  width: 97%
+  width: 97%;
+}
+
+.totalDistance {
+  border: black double 2px;
+  background-color: #3b3b3b;
+  color: #d7c716;
+  padding: 5px;
+  border-radius: 20px;
+  width: 34%;
+  margin-bottom: 12px;
+  padding-left: 30px;
+  font-size: 12px;
 }
