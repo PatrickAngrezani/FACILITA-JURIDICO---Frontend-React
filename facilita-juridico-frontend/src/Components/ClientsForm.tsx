@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-
+import styles from "../CSSModules/ClientsForm.module.css";
+import SuccessMessage from "./SuccessMessage";
 interface IClientFormData {
   name: string;
   email: string;
@@ -17,16 +18,17 @@ const ClientForm: React.FC<IClientFormProps> = ({ onAddClient }) => {
     name: "",
     email: "",
     phoneNumber: "",
-    x: 12,
-    y: 19,
+    x: 0,
+    y: 0,
   });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === "x" || name === "y" ? parseInt(value) : value,
     });
   };
 
@@ -41,23 +43,22 @@ const ClientForm: React.FC<IClientFormProps> = ({ onAddClient }) => {
         },
         body: JSON.stringify(formData),
       });
-      const json = await response.json();
-      console.log({ json });
 
       if (!response.ok) {
-        throw new Error("Erro ao adicionar cliente");
+        throw new Error("Error on register client");
       }
 
       if (onAddClient) {
         onAddClient(formData);
       }
 
+      setShowSuccessMessage(true);
       setFormData({
         name: "",
         email: "",
         phoneNumber: "",
-        x: Number(""),
-        y: Number(""),
+        x: 0,
+        y: 0,
       });
     } catch (error) {
       console.error(error);
@@ -68,56 +69,82 @@ const ClientForm: React.FC<IClientFormProps> = ({ onAddClient }) => {
     <div>
       <h1>Customer Registration</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+        <ul className={styles.clients_form}>
+          <li>
+            <label htmlFor="name" className={styles.label_form}>
+              Name:
+            </label>
+            <input
+              className={styles.clients_form_personal}
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </li>
 
-        <label htmlFor="email">E-mail:</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+          <li>
+            <label htmlFor="email">E-mail:</label>
+            <input
+              className={styles.clients_form_personal}
+              type="email"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </li>
 
-        <label htmlFor="phoneNumber">Phone:</label>
-        <input
-          type="number"
-          name="phoneNumber"
-          id="phoneNumber"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-          required
-        />
+          <li>
+            <label htmlFor="phoneNumber">Phone:</label>
+            <input
+              className={styles.clients_form_personal}
+              type="number"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
+            />
+          </li>
 
-        <label htmlFor="x">x:</label>
-        <input
-          type="number"
-          id="x"
-          name="x"
-          value={Number(formData.x)}
-          onChange={handleChange}
-        />
+          <li>
+            <label htmlFor="x">x:</label>
+            <input
+              className={styles.clients_form_coordinates}
+              type="number"
+              id="x"
+              name="x"
+              value={Number(formData.x)}
+              onChange={handleChange}
+            />
+          </li>
 
-        <label htmlFor="y">y:</label>
-        <input
-          type="number"
-          id="y"
-          name="y"
-          value={Number(formData.y)}
-          onChange={handleChange}
-        />
+          <li>
+            <label htmlFor="y">y:</label>
+            <input
+              className={styles.clients_form_coordinates}
+              type="number"
+              id="y"
+              name="y"
+              value={Number(formData.y)}
+              onChange={handleChange}
+            />
+          </li>
+        </ul>
 
-        <button type="submit">Register</button>
+        <button className={styles.register_button} type="submit">
+          Register
+        </button>
       </form>
+
+      <SuccessMessage
+        show={showSuccessMessage}
+        onClose={() => setShowSuccessMessage(false)}
+      />
     </div>
   );
 };

@@ -1,14 +1,13 @@
 body {
-  background-color: #e0e0e0;
-  flex-direction: column;
+  font-family: monospace;
 }
 
 h1 {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: start;
   font-size: 2em;
-  width: 322px;
   padding-left: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -26,6 +25,7 @@ h1 {
 }
 
 .pointsButton {
+  width: 100%;
   font-weight: bold;
   background-color: #5dade2;
   color: #34495e;
@@ -64,6 +64,7 @@ h1 {
 }
 
 .identifierClient {
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: #5dade2;
@@ -114,10 +115,10 @@ h1 {
 }
 
 .clients_list {
+  width: 100%;
   align-items: start;
   justify-items: start;
   margin-left: 1px;
   float: right;
-  width: 327px;
   color: #5dade2;
 }

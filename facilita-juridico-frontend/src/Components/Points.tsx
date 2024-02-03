@@ -34,7 +34,7 @@ const Points = (): JSX.Element => {
 
   const introductionPoints = `Below is a comprehensive list about clients coordinates and the optimal visitation order.`;
   const advice =
-    "*The initial and terminal points correspond to our corporate headquarters, augmenting the comprehensiveness and precision of the  calculations.";
+    "*The starting and ending points correspond to our corporate headquarters, enhancing the range and precision of the calculations.";
 
   return (
     <body>

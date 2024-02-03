@@ -1,0 +1,50 @@
+.clients_form {
+  background-color: #5dade2;
+  padding: 18px;
+  border-radius: 18px;
+  list-style: none;
+  color: #262727;
+}
+
+.clients_form_personal {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 3px;
+  background-color: #b4cff1;
+  border-radius: 30px;
+  color: #34495e;
+  padding: 3px;
+  padding-left: 10px;
+}
+
+.clients_form_coordinates {
+  margin-right: 98%;
+  margin-bottom: 10px;
+  margin-top: 3px;
+  background-color: #b4cff1;
+  border-radius: 30px;
+  color: #34495e;
+  padding: 3px;
+  padding-left: 10px;
+}
+
+.clients_form_personal:hover {
+  border-color: #34495e;
+}
+
+.clients_form_coordinates:hover {
+  border-color: #34495e;
+}
+
+.register_button {
+  width: 80px;
+  text-align: left;
+  padding: 1px;
+  padding-left: 10px;
+  border-radius: 30px;
+  font-size: smaller;
+  font-weight: bolder;
+  background-color: #a2d1f0;
+  color: #34495e;
+  border: dotted 2px;
+}
